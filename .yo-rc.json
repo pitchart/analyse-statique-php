@@ -1,0 +1,9 @@
+{
+  "generator-reveal": {
+    "presentationTitle": "Analyse statique de code en PHP",
+    "packageVersion": "1.0.0",
+    "revealTheme": "black",
+    "useSass": false,
+    "deployToGithubPages": false
+  }
+}

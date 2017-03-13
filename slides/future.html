@@ -1,0 +1,52 @@
+<section>
+    <h2>3ème génération ?</h2>
+    <p>détection d'erreurs potentielles</p>
+<pre><code class="hljs php">
+if ($a = $b) {  // affectation dans une condition
+    $c == 3;    // comparaison
+}
+$d = 'test';
+//...
+$d = 42;
+</code></pre>
+<p class="fragment">pourtant la syntaxe est valide</p>
+</section>
+<section>
+    <h3>PHP Inspections (PhpStorm)</h3>
+    <ul>
+        <li>Erreurs de Design Patterns</li>
+        <li>Amélioration des performances</li>
+        <li>Optimisation des structures de code (if, foreach ...)</li>
+    </ul>
+</section>
+<section>
+    <h3 class="php-color">PHP7</h3>
+    <p>
+        Introduction d'un arbre syntaxique abstrait <span class="t3-color">AST</span> <br>
+        => Arbre dont les noeuds sont les opérateurs et les feuilles des variables ou constantes
+    </p>
+    <p class="fragment">
+        Avant PHP7 : <a href="https://github.com/nikic/PHP-Parser">nikic/php-parser</a>
+    </p>
+</section>
+<section>
+    <img src="resources/img/ast.png">
+</section>
+<section>
+    <ul>
+        <li>
+            Unification de la recherche d'expressions : <br>
+            <code class="php-color"> $foo</code>, <code class="php-color"> $$bar</code>, <code class="php-color"> ${'foo'}</code>
+        </li>
+        <li class="fragment">
+            Simplification de la détection de patterns d'erreur : <br>
+            <code class="php-color"> if ($a = $b) </code>...
+        </li>
+        <li class="fragment">
+            \o/ <span class="t3-color">Génération du code corrigé</span> \o/
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>A vous de jouer !</h3>
+</section>

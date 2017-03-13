@@ -1,0 +1,77 @@
+<section>
+    <h2>Analyse de base</h2>
+</section>
+<section>
+    <h3>Linter</h3>
+    <p>Inclus dans dans <span class="php-color">php cli</span></p>
+    <pre><code class="hljs bash">$ php -l path/to/php/file.php</code></pre>
+    <div class="fragment">
+        <br>
+        Version améliorée :
+        <pre><code class="hljs bash">find ./src -name "*.php" \
+    -exec /usr/bin/env php -l {} \; \
+    | grep "Parse error"</code></pre>
+    </div>
+</section>
+<section>
+    <h3>
+        Linter <br>
+        <span class="fragment">Version accélérée</span>
+    </h3>
+    <p class="fragment">
+        <a href="https://github.com/JakubOnderka/PHP-Parallel-Lint">
+            PHP Parallel Lint
+        </a>
+    </p>
+    <pre class="fragment"><code>composer require --dev jakub-onderka/php-parallel-lint</code></pre>
+    <ul class="fragment">
+        <li class="pros-line">Processus lancés en parallèle par fichier.</li>
+        <li class="fragment pros-line">Affichage amélioré</li>
+    </ul>
+</section>
+<section>
+    <h3>Un bon IDE</h3>
+    <pre><code class="hljs c">
+static OSStatus
+SSLVerifySignedServerKeyExchange(SSLContext *ctx, bool isRsa, SSLBuffer signedParams,
+                                 uint8_t *signature, UInt16 signatureLen)
+{
+    OSStatus        err;
+    [...]
+
+    if ((err = SSLHashSHA1.update(&hashCtx, &serverRandom)) != 0)
+        goto fail;
+    if ((err = SSLHashSHA1.update(&hashCtx, &signedParams)) != 0)
+        goto fail;
+        goto fail;
+    if ((err = SSLHashSHA1.final(&hashCtx, &hashOut)) != 0)
+        goto fail;
+    [...]
+
+fail:
+    SSLFreeBuffer(&signedHashes);
+    SSLFreeBuffer(&hashCtx);
+    return err;
+}</code></pre>
+    <a href="http://opensource.apple.com/source/Security/Security-55471/libsecurity_ssl/lib/sslKeyExchange.c">[SOURCE]</a>
+</section>
+<section>
+    <h3>Un bon IDE</h3>
+    <img class="mbn" src="resources/img/appcode.png" alt="">
+    <blockquote class="mtn">
+        Tip of the day: Detecting unreachable code is easy with AppCode. Can your IDE do the same?
+        <footer><a href="https://twitter.com/appcode/status/437896886649757696">JetBrains Appcode</a></footer>
+    </blockquote>
+</section>
+<section>
+    <h3>La revue de code</h3>
+    <img src="resources/img/wtf.png" alt="">
+</section>
+<section>
+    <ul>
+        <li class="pros-line">Améliore <strong>les compétences de l'équipe</strong></li>
+        <li class="pros-line">Permet d'analyser les algorithmes / patterns utilisés</li>
+        <li class="cons-line">Les deux premiers points sont les principaux intérêts</li>
+        <li class="cons-line">Difficile à organiser à chaque commit</li>
+    </ul>
+</section>

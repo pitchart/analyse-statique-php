@@ -1,0 +1,54 @@
+<section>
+    <h2>Respect des standards de code</h2>
+</section>
+<section>
+<h3><a href="https://packagist.org/packages/squizlabs/php_codesniffer">PHP Code Sniffer</a></h3>
+<p>Détection et correction des violations par rapport à un standard de code</p>
+<pre><code class="hljs bash">$ composer global require squizlabs/php_codesniffer</code></pre>
+</section>
+<section>
+    <p>2 scripts PHP :</p>
+    <span class="t3-color"><code>phpcs</code></span> : détection des violations et affichage des erreurs
+    <span class="t3-color"><code>phpcs</code></span> : correction automatique de certaines erreurs
+</section>
+<section>
+<pre><code class="hljs bash">$ phpcs --standard=PSR2 --extensions=php src/
+
+FILE: /src/myfile.php
+--------------------------------------------------------------------------------
+FOUND 5 ERROR(S) AFFECTING 5 LINE(S)
+--------------------------------------------------------------------------------
+  2 | ERROR | Missing file doc comment
+ 20 | ERROR | PHP keywords must be lowercase; expected "false" but found "FALSE"
+ 47 | ERROR | Line not indented correctly; expected 4 spaces but found 1
+ 51 | ERROR | Missing function doc comment
+ 88 | ERROR | Line not indented correctly; expected 9 spaces but found 6
+--------------------------------------------------------------------------------
+</code></pre>
+</section>
+<section>
+    <h3><a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">PHP Coding Standards Fixer</a></h3>
+<p>Détection et correction des violations spécialisé PSR-1 et PSR-2</p>
+<pre><code class="hljs bash">composer global require friendsofphp/php-cs-fixer</code></pre>
+</section>
+<section>
+    <pre><code class="hljs bash">$ php-cs-fixer fix --rules=@PSR2 src/</code></pre>
+</section>
+<section>
+<pre><code class="hljs diff">    1) /path/to/file.php
+      ---------- begin diff ----------
+--- Original
++++ New
+@@ @@
+     $application->setDefaultCommand($defaultCommand->getName());
+-}
+-else {
+-
++} else {
+
+@@ @@
+ $application->run();
++
+      ----------- end diff -----------
+</code></pre>
+</section>
