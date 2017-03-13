@@ -1,0 +1,120 @@
+<section>
+    <h2>&Eacute;valuer la complexité du code</h2>
+</section>
+<section>
+    <h3><a href="https://phpmd.org/">PHP Mess Detector</a></h3>
+    <p>Détection de problèmes potentiels dans le code :</p>
+    <ul>
+        <li class="fragment">Possibilités de bugs</li>
+        <li class="fragment">Code non optimal</li>
+        <li class="fragment">Expression sur-compliquées</li>
+        <li class="fragment">Code mort : variables, méthodes, fonctions</li>
+    </ul>
+    <pre class="fragment"><code class="hljs bash">$ composer global require phpmd/phpmd</code></pre>
+</section>
+<section>
+<pre><code class="hljs bash">phpmd --suffixes php src/ text \
+    codesize,design,naming,unusedcode,controversial</code></pre>
+<pre><code class="hljs bash">
+src/Collection.php:10  The class Collection has 25 public methods. Consider refactoring Collection to keep number of public methods under 10.
+src/GeneratorCollection.php:88 Avoid unused local variables such as '$key'.
+src/GeneratorCollection.php:116    Avoid unused local variables such as '$key'.
+</code></pre>
+</section>
+<section>
+    <h3><a href="https://github.com/sebastianbergmann/phpcpd">PHP Copy Past Detector</a></h3>
+    <p>Détection des copier/coller dans le code PHP</p>
+    <pre class="fragment"><code class="hljs bash">$ composer global require sebastian/phpcpd</code></pre>
+</section>
+<section>
+<pre><code class="hljs bash">$ phpcpd wordpress-4.7.1
+phpcpd 3.0.0 by Sebastian Bergmann.
+
+Found 59 clones with 2548 duplicated lines in 39 files:
+
+  - /home/sb/wordpress-4.7.1/wp-admin/includes/class-ftp-pure.php:99-114
+    /home/sb/wordpress-4.7.1/wp-admin/includes/class-ftp-sockets.php:119-134
+  .
+  .
+  .
+  - /home/sb/wordpress-4.7.1/wp-includes/class-wp-customize-manager.php:277-329
+    /home/sb/wordpress-4.7.1/wp-includes/class-wp-customize-control.php:652-704
+
+0.77% duplicated lines out of 332387 total lines of code.
+
+Time: 2.91 seconds, Memory: 232.00MB
+</code></pre>
+</section>
+<section>
+    <h3><a href="https://github.com/sebastianbergmann/phploc">PHPLOC</a></h3>
+    <p>Mesure de la taille et analyse de la structure d'un projet PHP</p>
+    <pre class="fragment"><code class="hljs bash">$ composer global require phploc/phploc</code></pre>
+    <pre class="fragment"><code class="hljs bash">$ phploc --count-tests src/ tests/</code></pre>
+</section>
+<section>
+<pre><code class="hljs bash">Directories                                          5
+Files                                               13
+
+Size
+  Lines of Code (LOC)                             1826
+  Comment Lines of Code (CLOC)                     452 (24.75%)
+  Non-Comment Lines of Code (NCLOC)               1374 (75.25%)
+  Logical Lines of Code (LLOC)                     413 (22.62%)
+    Classes                                        121 (29.30%)
+      Average Class Length                          10
+        Minimum Class Length                         0
+        Maximum Class Length                        52
+      Average Method Length                          2
+        Minimum Method Length                        1
+        Maximum Method Length                        8
+    Functions                                      263 (63.68%)
+      Average Function Length                        3
+    Not in classes or functions                     29 (7.02%)
+
+Cyclomatic Complexity
+  Average Complexity per LLOC                     0.12
+  Average Complexity per Class                    4.08
+    Minimum Class Complexity                      1.00
+    Maximum Class Complexity                     18.00
+  Average Complexity per Method                   1.72
+    Minimum Method Complexity                     1.00
+    Maximum Method Complexity                     7.00
+
+Dependencies
+  Global Accesses                                    0
+    Global Constants                                 0 (0.00%)
+    Global Variables                                 0 (0.00%)
+    Super-Global Variables                           0 (0.00%)
+  Attribute Accesses                                10
+    Non-Static                                      10 (100.00%)
+    Static                                           0 (0.00%)
+  Method Calls                                     318
+    Non-Static                                     162 (50.94%)
+    Static                                         156 (49.06%)
+
+Structure
+  Namespaces                                         6
+  Interfaces                                         2
+  Traits                                             1
+  Classes                                            4
+    Abstract Classes                                 0 (0.00%)
+    Concrete Classes                                 4 (100.00%)
+  Methods                                           56
+    Scope
+      Non-Static Methods                            51 (91.07%)
+      Static Methods                                 5 (8.93%)
+    Visibility
+      Public Methods                                53 (94.64%)
+      Non-Public Methods                             3 (5.36%)
+  Functions                                         79
+    Named Functions                                  7 (8.86%)
+    Anonymous Functions                             72 (91.14%)
+  Constants                                          0
+    Global Constants                                 0 (0.00%)
+    Class Constants                                  0 (0.00%)
+
+Tests
+  Classes                                            5
+  Methods                                           62
+</code></pre>
+</section>
